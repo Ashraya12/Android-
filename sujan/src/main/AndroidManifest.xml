@@ -3,12 +3,14 @@
     package="com.ktm.sujan">
 
     <application>
-        <activity android:name="com.ktm.sujan.SujanMainActivity" />
+        <activity android:name=".SecondMainActivity"></activity>
+        <activity android:name=".SujanMainActivity" />
+
         <activity-alias
             android:name=".SujanMainActivity"
             android:icon="@mipmap/ic_launcher_sujan"
             android:label="AD Sujan"
-            android:targetActivity="com.ktm.sujan.SujanMainActivity">
+            android:targetActivity=".SujanMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
