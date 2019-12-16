@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AaryanMainActivity">
+    tools:context=".login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,21 +23,16 @@
             android:textSize="25dp" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/l_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
             android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:textAlignment="center" />
+
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/l_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -52,11 +47,11 @@
             android:padding="25dp">
 
             <Button
-                android:id="@+id/sign_up"
+                android:id="@+id/l_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Sign Up" />
+                android:text="Login" />
 
         </LinearLayout>
 
