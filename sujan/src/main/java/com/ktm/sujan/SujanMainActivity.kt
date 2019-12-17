@@ -19,7 +19,7 @@ class SujanMainActivity : AppCompatActivity() {
 
 
         login.setOnClickListener() {
-            val intent = Intent(this,SecondMainActivity)
+            val intent = Intent(this, SecondMainActivity::class.java)
             startActivity(intent)
 
             Toast.makeText(this@SujanMainActivity, "Logged in as $name", Toast.LENGTH_LONG).show()
