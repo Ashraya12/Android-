@@ -3,7 +3,8 @@
     package="com.ktm.sujan">
 
     <application>
-        <activity android:name=".SecondMainActivity"></activity>
+        <activity android:name=".SecondMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".SujanMainActivity" />
 
         <activity-alias
