@@ -3,7 +3,10 @@
     package="com.ktm.aaryan">
 
     <application>
+
+
         <activity android:name=".AaryanMainActivity" />
+
         <activity-alias
             android:name=".AaryanMainActivity"
             android:icon="@mipmap/ic_launcher_aaryan"
@@ -15,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+
+        <activity android:name=".Login" />
+        <activity android:name=".ListView" />
+
     </application>
 
 </manifest>
