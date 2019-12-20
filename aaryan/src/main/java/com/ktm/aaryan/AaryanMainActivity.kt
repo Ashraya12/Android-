@@ -16,6 +16,7 @@ class AaryanMainActivity : AppCompatActivity() {
 
     private lateinit var handler:Database
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aaryan_main)
@@ -50,12 +51,7 @@ class AaryanMainActivity : AppCompatActivity() {
                     Toast.makeText(this@AaryanMainActivity, "Enter valid email", Toast.LENGTH_LONG)
                         .show()
                 }
-
-
             }
-
-
-
         })
 
         sign_up.setOnClickListener {
@@ -63,7 +59,7 @@ class AaryanMainActivity : AppCompatActivity() {
             val intent = Intent(this@AaryanMainActivity,ListView::class.java)
             startActivity(intent)
 
-            /*val username = username.text
+            val username = username.text
 
             val email = email.text
 
@@ -72,40 +68,23 @@ class AaryanMainActivity : AppCompatActivity() {
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this@AaryanMainActivity, "All fields are required", Toast.LENGTH_LONG)
                     .show()
-            }*/
-           /* Thread{
-                val usr = room_entity()
-                usr.email = email.toString()
-                usr.password = password.toString()
-                usr.uname = username.toString()
-
-                db.usrDAO().saveUSer(usr)
-            }.start()*/
-
-
+            }
 
         }
 
+            if(handler.insertData(username.toString(),email.toString(),password.toString())){
 
-           /* handler.insertData(username.toString(),email.toString(),password.toString())
-            Toast.makeText(this@AaryanMainActivity, "User created successfully", Toast.LENGTH_LONG)
-                .show()
-            val intent = Intent(this@AaryanMainActivity,Login::class.java)
-            startActivity(intent)*/
-        }
-            /*{
                 Toast.makeText(this@AaryanMainActivity, "User created successfully", Toast.LENGTH_LONG)
                     .show()
                 val intent = Intent(this@AaryanMainActivity,Login::class.java)
                 startActivity(intent)
             }
-            else{
-                Toast.makeText(this@AaryanMainActivity, "Data Insertion Failure", Toast.LENGTH_LONG)
+        else{
+                Toast.makeText(this@AaryanMainActivity, "User creation error", Toast.LENGTH_LONG)
                     .show()
-            }*/
-
-
+            }
 
         }
+}
 
 

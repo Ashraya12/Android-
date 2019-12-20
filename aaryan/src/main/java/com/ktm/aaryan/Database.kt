@@ -2,6 +2,7 @@ package com.ktm.aaryan
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -33,17 +34,24 @@ class Database(context: Context) : SQLiteOpenHelper(context,dbname,factory,versi
         val ins = db.insert(TABLE_NAME,null,contentValues)
         return !ins.equals(-1)
     }
+    fun checkUser(username: String,password: String):Cursor{
+        val db:SQLiteDatabase = this.writableDatabase
+        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_UNAME = $username & $COLUMN_PASSWORD = $password",null)
+    }
 
-    fun CheckUser(username: String,password: String):Boolean{
+    /*fun CheckUser(username: String,password: String):Boolean{
         val db = this.readableDatabase
-        val contentValues = ContentValues()
-        val query = "select * from " + TABLE_NAME + " where $COLUMN_UNAME = $username and $COLUMN_PASSWORD = $password"
+
+        val query =
+            "select * from $TABLE_NAME where $COLUMN_UNAME = $username and $COLUMN_PASSWORD = $password"
         val cursor = db.rawQuery(query,null)
         return cursor.count > 0
 
 
 
-    }
+    }*/
+
+
 
 
 

@@ -16,6 +16,8 @@ class Login : AppCompatActivity() {
 
     private lateinit var handler:Database
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,6 +37,24 @@ class Login : AppCompatActivity() {
                 Toast.makeText(this@Login, "All fields are required", Toast.LENGTH_LONG)
                     .show()
             }
+            else{
+                val data = handler.checkUser(username0.toString(),password0.toString())
+                val stringBuffer = StringBuffer()
+                if (data.count>0){
+                    while (data.moveToNext()){
+                        if (data.equals(username0)){
+                            Toast.makeText(this@Login, "Logged in", Toast.LENGTH_LONG)
+                                .show()
+                        }
+                        else{
+                            Toast.makeText(this@Login, "Failed", Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+                }
+
+
+            }
 
             /*db.usrDAO().checkUser()*/
 
@@ -47,6 +67,7 @@ class Login : AppCompatActivity() {
                     .show()
             }*/
         }
+
 
 
 
