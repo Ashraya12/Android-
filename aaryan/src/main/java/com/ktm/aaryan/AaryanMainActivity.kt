@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_aaryan_main.*
 
 
 class AaryanMainActivity : AppCompatActivity() {
 
-    private lateinit var handler:Database
+    private lateinit var handler: Database
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +30,7 @@ class AaryanMainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
 
             }
+
             override fun beforeTextChanged(
                 s: CharSequence, start: Int,
                 count: Int, after: Int
@@ -56,35 +55,32 @@ class AaryanMainActivity : AppCompatActivity() {
 
         sign_up.setOnClickListener {
 
-            val intent = Intent(this@AaryanMainActivity,ListView::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@AaryanMainActivity, ListView::class.java))
 
-            val username = username.text
 
-            val email = email.text
-
-            val password = password.text
-
-            if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this@AaryanMainActivity, "All fields are required", Toast.LENGTH_LONG)
+            if (username.text.isEmpty() || email.text.isEmpty() || password.text.isEmpty()) {
+                Toast.makeText(
+                    this@AaryanMainActivity,
+                    "All fields are required",
+                    Toast.LENGTH_LONG
+                )
                     .show()
             }
 
+            else{
+                    if (handler.insertData(username.text.toString(), email.text.toString(), password.text.toString())) {
+
+                        Toast.makeText(this@AaryanMainActivity, "User created successfully", Toast.LENGTH_LONG)
+                            .show()
+                        val intent = Intent(this@AaryanMainActivity, Login::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@AaryanMainActivity, "User creation error", Toast.LENGTH_LONG)
+                            .show()
+                    }
+            }
         }
-
-            if(handler.insertData(username.toString(),email.toString(),password.toString())){
-
-                Toast.makeText(this@AaryanMainActivity, "User created successfully", Toast.LENGTH_LONG)
-                    .show()
-                val intent = Intent(this@AaryanMainActivity,Login::class.java)
-                startActivity(intent)
-            }
-        else{
-                Toast.makeText(this@AaryanMainActivity, "User creation error", Toast.LENGTH_LONG)
-                    .show()
-            }
-
-        }
+    }
 }
 
 

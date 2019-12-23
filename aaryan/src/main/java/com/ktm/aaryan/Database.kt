@@ -16,11 +16,10 @@ class Database(context: Context) : SQLiteOpenHelper(context,dbname,factory,versi
                 COLUMN_UNAME + " VARCHAR(10),"+
                 COLUMN_EMAIL + " VARCHAR(50),"+
                 COLUMN_PASSWORD + " VARCHAR(20))"
-        db!!.execSQL(createTable)
-
+        db?.execSQL(createTable)
     }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS USER")
+        db?.execSQL("DROP TABLE IF EXISTS USER")
         onCreate(db)
     }
 
@@ -34,27 +33,17 @@ class Database(context: Context) : SQLiteOpenHelper(context,dbname,factory,versi
         val ins = db.insert(TABLE_NAME,null,contentValues)
         return !ins.equals(-1)
     }
-    fun checkUser(username: String,password: String):Cursor{
+    fun login(username: String,password: String):Boolean{
         val db:SQLiteDatabase = this.writableDatabase
-        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_UNAME = $username & $COLUMN_PASSWORD = $password",null)
+        val cursor:Cursor  ?= db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_UNAME = ? AND $COLUMN_PASSWORD = ?",arrayOf("$username","$password"))
+       return (cursor != null && cursor.count > 0)
     }
 
-    /*fun CheckUser(username: String,password: String):Boolean{
-        val db = this.readableDatabase
-
-        val query =
-            "select * from $TABLE_NAME where $COLUMN_UNAME = $username and $COLUMN_PASSWORD = $password"
-        val cursor = db.rawQuery(query,null)
-        return cursor.count > 0
-
-
-
+    /*fun checkUser(username: String,password: String):Boolean{
+        val db:SQLiteDatabase = this.writableDatabase
+        val cursor:Cursor  ?= db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_UNAME = ? AND $COLUMN_PASSWORD = ?",arrayOf("$username","$password"))
+        return (cursor != null && cursor.count > 0)
     }*/
-
-
-
-
-
 
     companion object{
         internal const val dbname = "hellofusers"

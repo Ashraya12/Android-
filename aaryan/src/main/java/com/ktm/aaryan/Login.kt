@@ -1,14 +1,11 @@
 package com.ktm.aaryan
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
-import kotlinx.android.synthetic.main.activity_aaryan_main.*
 import kotlinx.android.synthetic.main.activity_login.*
-
-
 
 
 class Login : AppCompatActivity() {
@@ -27,51 +24,23 @@ class Login : AppCompatActivity() {
        /* val db = Room.databaseBuilder(applicationContext,room_db::class.java,"UserDB").allowMainThreadQueries()*/
 
         l_login.setOnClickListener {
-            val username0 = l_username.text
 
 
-
-            val password0 = l_password.text
-
-            if (username0.isEmpty() || password0.isEmpty()) {
+            if (l_username.text.isEmpty() || l_password.text.isEmpty()) {
                 Toast.makeText(this@Login, "All fields are required", Toast.LENGTH_LONG)
                     .show()
             }
             else{
-                val data = handler.checkUser(username0.toString(),password0.toString())
-                val stringBuffer = StringBuffer()
-                if (data.count>0){
-                    while (data.moveToNext()){
-                        if (data.equals(username0)){
-                            Toast.makeText(this@Login, "Logged in", Toast.LENGTH_LONG)
-                                .show()
-                        }
-                        else{
-                            Toast.makeText(this@Login, "Failed", Toast.LENGTH_LONG)
-                                .show()
-                        }
+                if(handler.login(l_username.text.toString(),l_password.text.toString())){
+                        Toast.makeText(this@Login, "Logged in", Toast.LENGTH_LONG)
+                            .show()
+                        startActivity(Intent(this,ListView::class.java))
                     }
+                else{
+                    Toast.makeText(this@Login, "Enter correct credentials", Toast.LENGTH_LONG)
+                        .show()
                 }
-
-
             }
-
-            /*db.usrDAO().checkUser()*/
-
-            /*if(handler.CheckUser(username0.toString(),email.toString())){
-                Toast.makeText(this@Login, "Successfully Logged in", Toast.LENGTH_LONG)
-                    .show()
-            }
-            else{
-                Toast.makeText(this@Login, "Invalid user data", Toast.LENGTH_LONG)
-                    .show()
-            }*/
         }
-
-
-
-
-
-
     }
 }

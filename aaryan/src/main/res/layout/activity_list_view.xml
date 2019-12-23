@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:id = "@+id/imageButton"
         android:maxWidth="20dp"
-        android:minHeight="20dp"
-        android:src="@drawable/myimage"/>
+        android:minHeight="20dp"/>
 
 </LinearLayout>
