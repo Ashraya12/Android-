@@ -3,7 +3,10 @@
     package="com.ktm.ashraya">
 
     <application>
+        <activity android:name=".nextpage"></activity>
+        <activity android:name=".RoomEx" />
         <activity android:name=".AshrayaMainActivity" />
+
         <activity-alias
             android:name=".AshrayaMainActivity"
             android:icon="@mipmap/ic_launcher_ashraya"
