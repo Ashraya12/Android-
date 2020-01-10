@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.button1 -> startActivity(Intent(this, AaryanMainActivity::class.java))
             R.id.button2 -> startActivity(Intent(this, AshrayaMainActivity::class.java))
-            R.id.button3 -> startActivity(Intent(this, BibekMainActivity::class.java))
+            R.id.btn2 -> startActivity(Intent(this, BibekMainActivity::class.java))
             R.id.button4 -> startActivity(Intent(this, BipulMainActivity::class.java))
             R.id.button5 -> startActivity(Intent(this, SujanMainActivity::class.java))
         }

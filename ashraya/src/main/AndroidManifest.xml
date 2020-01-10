@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ktm.ashraya">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application>
-        <activity android:name=".nextpage"></activity>
+        <activity android:name=".VolleyActivity"></activity>
+        <activity android:name=".nextpage" />
         <activity android:name=".RoomEx" />
         <activity android:name=".AshrayaMainActivity" />
 

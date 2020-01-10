@@ -5,14 +5,19 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_nextpage.*
 
 class nextpage : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nextpage)
         val handler =DatabaseHandler(this)
+
+
+
 
         val context = this
 
